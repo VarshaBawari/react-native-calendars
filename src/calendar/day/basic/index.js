@@ -54,7 +54,7 @@ class Day extends Component {
     let dot;
     if (marked.marked) {
       dotStyle.push(this.style.visibleDot);
-      dot = (<View style={dotStyle}/>);
+      dot = (<View style={dotStyle}><Text></Text></View>);
     } else if (!this.props.markingExists) {
       textStyle.push(this.style.alignedText);
     }
