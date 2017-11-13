@@ -63,7 +63,9 @@ class Calendar extends Component {
     //Hide day names. Default = false
     hideDayNames: PropTypes.bool,
     //Disable days by default. Default = false
-    disabledByDefault: PropTypes.bool
+    disabledByDefault: PropTypes.bool,
+    // Replace default day with custom one
+    renderDay: PropTypes.func
   };
 
   constructor(props) {
@@ -161,6 +163,7 @@ class Calendar extends Component {
           onPress={this.pressDay}
           day={day}
           marked={this.getDateMarking(day)}
+          renderDay={this.props.renderDay}
         >
           {day.getDate()}
         </DayComp>
