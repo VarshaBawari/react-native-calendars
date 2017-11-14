@@ -13,10 +13,10 @@ export default function getStyle(theme={}) {
       backgroundColor: appStyle.calendarBackground
     },
     week: {
-      marginTop: 7,
-      marginBottom: 7,
+      marginTop: 3,
+      marginBottom: 3,
       flexDirection: 'row',
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
     },
     ...(theme[STYLESHEET_ID] || {})
   });

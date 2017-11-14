@@ -64,21 +64,22 @@ class Calendar extends Component {
     hideDayNames: PropTypes.bool,
     //Disable days by default. Default = false
     disabledByDefault: PropTypes.bool,
-    // Replace default day with custom one
-    renderDay: PropTypes.func
+    renderSlotCount: PropTypes.object,
   };
 
   constructor(props) {
     super(props);
     this.style = styleConstructor(this.props.theme);
     let currentMonth;
+    let count;
     if (props.current) {
       currentMonth = parseDate(props.current);
     } else {
       currentMonth = XDate();
     }
     this.state = {
-      currentMonth
+      currentMonth,
+      count
     };
 
     this.updateMonth = this.updateMonth.bind(this);
@@ -132,6 +133,10 @@ class Calendar extends Component {
   addMonth(count) {
     this.updateMonth(this.state.currentMonth.clone().addMonths(count, true));
   }
+  slotText(day){
+    let slotdate=day.toString('yyyy-MM-dd')
+    return (this.props.renderSlotCount[slotdate]!== null?this.props.renderSlotCount[slotdate]: 0)
+  }
 
   renderDay(day, id) {
     const minDate = parseDate(this.props.minDate);
@@ -163,7 +168,7 @@ class Calendar extends Component {
           onPress={this.pressDay}
           day={day}
           marked={this.getDateMarking(day)}
-          renderDay={this.props.renderDay}
+          showCount={this.slotText(day)}
         >
           {day.getDate()}
         </DayComp>

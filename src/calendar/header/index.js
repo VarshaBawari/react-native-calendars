@@ -5,7 +5,7 @@ import XDate from 'xdate';
 import PropTypes from 'prop-types';
 import styleConstructor from './style';
 import { weekDayNames } from '../../dateutils';
-
+import colors from '../../../../../src/constants/colors'
 class CalendarHeader extends Component {
   static propTypes = {
     theme: PropTypes.object,
@@ -93,7 +93,7 @@ class CalendarHeader extends Component {
         </View>
         {
           !this.props.hideDayNames &&
-          <View style={this.style.week}>
+          <View style={[this.style.week,{backgroundColor:colors.APP_GREEN}]}>
             {weekDaysNames.map((day, idx) => (
               <Text key={idx} style={this.style.dayHeader} numberOfLines={1}>{day}</Text>
             ))}

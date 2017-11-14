@@ -23,7 +23,7 @@ class Day extends Component {
     day: PropTypes.object,
 
     markingExists: PropTypes.bool,
-    renderDay: PropTypes.func
+    showCount: PropTypes.any
   };
 
   constructor(props) {
@@ -32,7 +32,7 @@ class Day extends Component {
     this.style = styleConstructor(props.theme);
     this.markingStyle = this.getDrawingStyle(props.marked);
     this.onDayPress = this.onDayPress.bind(this);
-    this.renderDay = this.renderDay.bind(this);
+    // this.renderSlotCount = this.renderSlotCount.bind(this);
   }
 
   onDayPress() {
@@ -106,18 +106,10 @@ class Day extends Component {
     }, {});
   }
 
-  renderDay(textStyle) {
-    if (this.props.renderDay) {
-      return this.props.renderDay(textStyle, this.props.day);
-    }
-    return (
-      <Text style={textStyle}>{String(this.props.children)}</Text>
-    );
-  }
-    
   render() {
     const containerStyle = [this.style.base];
     const textStyle = [this.style.text];
+    const count_textStyle = [this.style.counttext];
     let leftFillerStyle = {};
     let rightFillerStyle = {};
     let fillerStyle = {};
@@ -198,8 +190,8 @@ class Day extends Component {
         <View style={this.style.wrapper}>
           {fillers}
           <View style={containerStyle}>
-            {/* <Text style={textStyle}>{String(this.props.children)}</Text> */}
-            {this.renderDay(textStyle)}
+          <Text style={textStyle}>{String(this.props.children)}</Text>
+            {this.props.showCount > 0 && <Text style={count_textStyle}>{this.props.showCount+"Appts"}</Text>}
           </View>
         </View>
       </TouchableWithoutFeedback>
