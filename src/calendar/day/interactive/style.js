@@ -4,7 +4,7 @@ import size from '../../../../../../src/constants/size'
 import colors from '../../../../../../src/constants/colors'
 const STYLESHEET_ID = 'stylesheet.day.interactive';
 
-const FILLER_HEIGHT = size.component_height_calendar(60);
+const FILLER_HEIGHT = size.component_height_calendar(50);
 
 export default function styleConstructor(theme={}) {
   const appStyle = {...defaultStyle, ...theme};
