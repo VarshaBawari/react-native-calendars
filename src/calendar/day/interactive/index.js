@@ -191,7 +191,7 @@ class Day extends Component {
           {fillers}
           <View style={containerStyle}>
           <Text style={textStyle}>{String(this.props.children)}</Text>
-            {this.props.showCount > 0 && <Text style={count_textStyle}>{this.props.showCount+"Appts"}</Text>}
+            {this.props.showCount > 0 && <Text style={count_textStyle}>{"*"+this.props.showCount}</Text>}
           </View>
         </View>
       </TouchableWithoutFeedback>

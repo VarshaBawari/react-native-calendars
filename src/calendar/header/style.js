@@ -34,15 +34,15 @@ export default function(theme={}) {
       })
     },
     week: {
-      marginTop: 7,
+      marginTop: 5,
+      marginBottom :5,
       flexDirection: 'row',
       justifyContent: 'space-around',
-      borderWidth:1
     },
     dayHeader: {
       marginTop: 2,
       marginBottom: 7,
-      width: 32,
+      width: 40,
       textAlign: 'center',
       fontSize: appStyle.textDayHeaderFontSize,
       fontFamily: appStyle.textDayHeaderFontFamily,

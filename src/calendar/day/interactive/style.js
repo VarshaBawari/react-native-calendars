@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import * as defaultStyle from '../../../style';
 import size from '../../../../../../src/constants/size'
-
+import colors from '../../../../../../src/constants/colors'
 const STYLESHEET_ID = 'stylesheet.day.interactive';
 
 const FILLER_HEIGHT = size.component_height_calendar(60);
@@ -14,14 +14,18 @@ export default function styleConstructor(theme={}) {
       alignItems: 'center',
       alignSelf: 'stretch',
       marginLeft: -1,
-      borderWidth:1
+      borderLeftWidth:0.5,
+      borderTopWidth:0.5,
+      borderBottomWidth:0.5,
+      borderRightWidth:0.5,
+      borderColor: "#dce4f2",
+      marginTop:-7
     },
     base: {
       //borderWidth: 1,
       width: size.component_width_calendar(70),
       height: FILLER_HEIGHT,
       alignItems: 'center',
-     
     },
     fillers: {
       position: 'absolute',
@@ -39,7 +43,11 @@ export default function styleConstructor(theme={}) {
       flex: 1
     },
     text: {
-      marginTop: 7,
+      marginTop: size.margin_t_b(5),
+      marginLeft: size.margin_l_r_date(10),
+      // flexDirection: 'row',
+      // justifyContent: 'flex-end',
+      //alignItems: 'flex-end',
       fontSize: appStyle.textDayFontSize,
       fontFamily: appStyle.textDayFontFamily,
       fontWeight: '300',
@@ -47,8 +55,9 @@ export default function styleConstructor(theme={}) {
       backgroundColor: 'rgba(255, 255, 255, 0)'
     },
     counttext: {
-      marginTop: 7,
-      fontSize: size.font(10),
+      marginTop: size.margin_t_b_date(10),
+      marginRight: size.margin_l_r_date(10),
+      fontSize: size.font(12),
       fontFamily: appStyle.textDayFontFamily,
       color: appStyle.dayTextColor || '#2d4150',
       backgroundColor: 'rgba(255, 255, 255, 0)'
