@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //import _ from 'lodash';
 import {
@@ -28,7 +28,7 @@ class Day extends Component {
 
   constructor(props) {
     super(props);
-    this.theme = {...defaultStyle, ...(props.theme || {})};
+    this.theme = { ...defaultStyle, ...(props.theme || {}) };
     this.style = styleConstructor(props.theme);
     this.markingStyle = this.getDrawingStyle(props.marked);
     this.onDayPress = this.onDayPress.bind(this);
@@ -123,7 +123,7 @@ class Day extends Component {
 
     if (this.props.marked) {
       containerStyle.push({
-        borderRadius: 17
+        // borderRadius: 17,
       });
 
       const flags = this.markingStyle;
@@ -161,10 +161,12 @@ class Day extends Component {
           backgroundColor: flags.endingDay.color
         });
       } else if (flags.day) {
-        leftFillerStyle = {backgroundColor: flags.day.color};
-        rightFillerStyle = {backgroundColor: flags.day.color};
+        leftFillerStyle = { backgroundColor: "transparent", };
+        rightFillerStyle = { backgroundColor: "transparent", };
         // #177 bug
-        fillerStyle = {backgroundColor: flags.day.color};
+        fillerStyle = { backgroundColor: "rgb(247,250,252)", borderColor: flags.day.color, borderWidth: 2 };
+        containerStyle.push({ borderColor: flags.day.color, borderWidth: 2 })
+        textStyle.push({ fontWeight: "bold" })
       } else if (flags.endingDay && flags.startingDay) {
         rightFillerStyle = {
           backgroundColor: this.theme.calendarBackground
@@ -179,8 +181,8 @@ class Day extends Component {
 
       fillers = (
         <View style={[this.style.fillers, fillerStyle]}>
-          <View style={[this.style.leftFiller, leftFillerStyle]}/>
-          <View style={[this.style.rightFiller, rightFillerStyle]}/>
+          <View style={[this.style.leftFiller, leftFillerStyle]} />
+          <View style={[this.style.rightFiller, rightFillerStyle]} />
         </View>
       );
     }
@@ -189,9 +191,9 @@ class Day extends Component {
       <TouchableWithoutFeedback onPress={this.onDayPress}>
         <View style={this.style.wrapper}>
           {fillers}
-          <View style={containerStyle}>
-          <Text style={textStyle}>{String(this.props.children)}</Text>
-            {this.props.showCount > 0 && <Text style={count_textStyle}>{"*"+this.props.showCount}</Text>}
+          <View style={[containerStyle]}>
+            <Text style={textStyle}>{String(this.props.children)}</Text>
+            {this.props.showCount > 0 && <Text style={count_textStyle}>{this.props.showCount+"*"}</Text>}
           </View>
         </View>
       </TouchableWithoutFeedback>
