@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import * as defaultStyle from '../../../style';
-import size from '../../../../../../src/constants/size'
-import colors from '../../../../../../src/constants/colors'
+import size from './size'
+import colors from './colors'
 const STYLESHEET_ID = 'stylesheet.day.interactive';
 
 const FILLER_HEIGHT = size.component_height_calendar(50);

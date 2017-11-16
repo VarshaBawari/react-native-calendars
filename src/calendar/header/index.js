@@ -5,7 +5,7 @@ import XDate from 'xdate';
 import PropTypes from 'prop-types';
 import styleConstructor from './style';
 import { weekDayNames } from '../../dateutils';
-import colors from '../../../../../src/constants/colors'
+import colors from '../day/interactive/colors'
 class CalendarHeader extends Component {
   static propTypes = {
     theme: PropTypes.object,
